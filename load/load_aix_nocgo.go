@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/shirou/gopsutil/v3/internal/common"
+	"github.com/mqhack/gopsutil/v3/internal/common"
 )
 
 var separator = regexp.MustCompile(`,?\s+`)
@@ -53,13 +53,13 @@ func MiscWithContext(ctx context.Context) (*MiscStat, error) {
 	for _, line := range strings.Split(string(out), "\n") {
 		ret.ProcsTotal++
 		switch line {
-			case "R":
-			case "A":
-				ret.ProcsRunning++
-			case "T":
-				ret.ProcsBlocked++
-			default:
-				continue
+		case "R":
+		case "A":
+			ret.ProcsRunning++
+		case "T":
+			ret.ProcsBlocked++
+		default:
+			continue
 		}
 	}
 	return ret, nil

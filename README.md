@@ -1,6 +1,6 @@
 # gopsutil: psutil for golang
 
-[![Test](https://github.com/shirou/gopsutil/actions/workflows/test.yml/badge.svg)](https://github.com/shirou/gopsutil/actions/workflows/test.yml) [![Coverage Status](https://coveralls.io/repos/github/shirou/gopsutil/badge.svg?branch=master)](https://coveralls.io/github/shirou/gopsutil?branch=master) [![Go Reference](https://pkg.go.dev/badge/github.com/shirou/gopsutil/v3.svg)](https://pkg.go.dev/github.com/shirou/gopsutil/v3) [![Go Documentation](https://godocs.io/github.com/shirou/gopsutil/v3?status.svg)](https://godocs.io/github.com/shirou/gopsutil/v3) [![Calendar Versioning](https://img.shields.io/badge/calver-vMAJOR.YY.MM-22bfda.svg)](https://calver.org/)
+[![Test](https://github.com/mqhack/gopsutil/actions/workflows/test.yml/badge.svg)](https://github.com/mqhack/gopsutil/actions/workflows/test.yml) [![Coverage Status](https://coveralls.io/repos/github/shirou/gopsutil/badge.svg?branch=master)](https://coveralls.io/github/shirou/gopsutil?branch=master) [![Go Reference](https://pkg.go.dev/badge/github.com/mqhack/gopsutil/v3.svg)](https://pkg.go.dev/github.com/mqhack/gopsutil/v3) [![Go Documentation](https://godocs.io/github.com/mqhack/gopsutil/v3?status.svg)](https://godocs.io/github.com/mqhack/gopsutil/v3) [![Calendar Versioning](https://img.shields.io/badge/calver-vMAJOR.YY.MM-22bfda.svg)](https://calver.org/)
 
 This is a port of psutil (https://github.com/giampaolo/psutil). The
 challenge is porting all psutil functions on some architectures.
@@ -52,8 +52,8 @@ package main
 import (
     "fmt"
 
-    "github.com/shirou/gopsutil/v3/mem"
-    // "github.com/shirou/gopsutil/mem"  // to use v2
+    "github.com/mqhack/gopsutil/v3/mem"
+    // "github.com/mqhack/gopsutil/mem"  // to use v2
 )
 
 func main() {
@@ -95,7 +95,7 @@ You can set an alternative location to `/proc/N/mountinfo` by setting the
 
 ## Documentation
 
-See https://pkg.go.dev/github.com/shirou/gopsutil/v3 or https://godocs.io/github.com/shirou/gopsutil/v3
+See https://pkg.go.dev/github.com/mqhack/gopsutil/v3 or https://godocs.io/github.com/mqhack/gopsutil/v3
 
 ## Requirements
 
@@ -158,106 +158,105 @@ Some code is ported from Ohai. many thanks.
 - x: works
 - b: almost works, but something is broken
 
-|name                  |Linux  |FreeBSD  |OpenBSD  |macOS   |Windows  |Solaris  |Plan 9   |
-|----------------------|-------|---------|---------|--------|---------|---------|---------|
-|cpu\_times            |x      |x        |x        |x       |x        |         |b        |
-|cpu\_count            |x      |x        |x        |x       |x        |         |x        |
-|cpu\_percent          |x      |x        |x        |x       |x        |         |         |
-|cpu\_times\_percent   |x      |x        |x        |x       |x        |         |         |
-|virtual\_memory       |x      |x        |x        |x       |x        | b       |x        |
-|swap\_memory          |x      |x        |x        |x       |         |         |x        |
-|disk\_partitions      |x      |x        |x        |x       |x        |         |         |
-|disk\_io\_counters    |x      |x        |x        |        |         |         |         |
-|disk\_usage           |x      |x        |x        |x       |x        |         |         |
-|net\_io\_counters     |x      |x        |x        |b       |x        |         |         |
-|boot\_time            |x      |x        |x        |x       |x        |         |         |
-|users                 |x      |x        |x        |x       |x        |         |         |
-|pids                  |x      |x        |x        |x       |x        |         |         |
-|pid\_exists           |x      |x        |x        |x       |x        |         |         |
-|net\_connections      |x      |         |x        |x       |         |         |         |
-|net\_protocols        |x      |         |         |        |         |         |         |
-|net\_if\_addrs        |       |         |         |        |         |         |         |
-|net\_if\_stats        |       |         |         |        |         |         |         |
-|netfilter\_conntrack  |x      |         |         |        |         |         |         |
-
+| name                | Linux | FreeBSD | OpenBSD | macOS | Windows | Solaris | Plan 9 |
+| ------------------- | ----- | ------- | ------- | ----- | ------- | ------- | ------ |
+| cpu_times           | x     | x       | x       | x     | x       |         | b      |
+| cpu_count           | x     | x       | x       | x     | x       |         | x      |
+| cpu_percent         | x     | x       | x       | x     | x       |         |        |
+| cpu_times_percent   | x     | x       | x       | x     | x       |         |        |
+| virtual_memory      | x     | x       | x       | x     | x       | b       | x      |
+| swap_memory         | x     | x       | x       | x     |         |         | x      |
+| disk_partitions     | x     | x       | x       | x     | x       |         |        |
+| disk_io_counters    | x     | x       | x       |       |         |         |        |
+| disk_usage          | x     | x       | x       | x     | x       |         |        |
+| net_io_counters     | x     | x       | x       | b     | x       |         |        |
+| boot_time           | x     | x       | x       | x     | x       |         |        |
+| users               | x     | x       | x       | x     | x       |         |        |
+| pids                | x     | x       | x       | x     | x       |         |        |
+| pid_exists          | x     | x       | x       | x     | x       |         |        |
+| net_connections     | x     |         | x       | x     |         |         |        |
+| net_protocols       | x     |         |         |       |         |         |        |
+| net_if_addrs        |       |         |         |       |         |         |        |
+| net_if_stats        |       |         |         |       |         |         |        |
+| netfilter_conntrack | x     |         |         |       |         |         |        |
 
 ### Process class
 
-|name                |Linux  |FreeBSD  |OpenBSD  |macOS  |Windows  |
-|--------------------|-------|---------|---------|-------|---------|
-|pid                 |x      |x        |x        |x      |x        |
-|ppid                |x      |x        |x        |x      |x        |
-|name                |x      |x        |x        |x      |x        |
-|cmdline             |x      |x        |         |x      |x        |
-|create\_time        |x      |         |         |x      |x        |
-|status              |x      |x        |x        |x      |         |
-|cwd                 |x      |         |         |x      |         |
-|exe                 |x      |x        |x        |       |x        |
-|uids                |x      |x        |x        |x      |         |
-|gids                |x      |x        |x        |x      |         |
-|terminal            |x      |x        |x        |       |         |
-|io\_counters        |x      |x        |x        |       |x        |
-|nice                |x      |x        |x        |x      |x        |
-|num\_fds            |x      |         |         |       |         |
-|num\_ctx\_switches  |x      |         |         |       |         |
-|num\_threads        |x      |x        |x        |x      |x        |
-|cpu\_times          |x      |         |         |       |x        |
-|memory\_info        |x      |x        |x        |x      |x        |
-|memory\_info\_ex    |x      |         |         |       |         |
-|memory\_maps        |x      |         |         |       |         |
-|open\_files         |x      |         |         |       |         |
-|send\_signal        |x      |x        |x        |x      |         |
-|suspend             |x      |x        |x        |x      |         |
-|resume              |x      |x        |x        |x      |         |
-|terminate           |x      |x        |x        |x      |x        |
-|kill                |x      |x        |x        |x      |         |
-|username            |x      |x        |x        |x      |x        |
-|ionice              |       |         |         |       |         |
-|rlimit              |x      |         |         |       |         |
-|num\_handlers       |       |         |         |       |         |
-|threads             |x      |         |         |       |         |
-|cpu\_percent        |x      |         |x        |x      |         |
-|cpu\_affinity       |       |         |         |       |         |
-|memory\_percent     |       |         |         |       |         |
-|parent              |x      |         |x        |x      |x        |
-|children            |x      |x        |x        |x      |x        |
-|connections         |x      |         |x        |x      |         |
-|is\_running         |       |         |         |       |         |
-|page\_faults        |x      |         |         |       |         |
+| name             | Linux | FreeBSD | OpenBSD | macOS | Windows |
+| ---------------- | ----- | ------- | ------- | ----- | ------- |
+| pid              | x     | x       | x       | x     | x       |
+| ppid             | x     | x       | x       | x     | x       |
+| name             | x     | x       | x       | x     | x       |
+| cmdline          | x     | x       |         | x     | x       |
+| create_time      | x     |         |         | x     | x       |
+| status           | x     | x       | x       | x     |         |
+| cwd              | x     |         |         | x     |         |
+| exe              | x     | x       | x       |       | x       |
+| uids             | x     | x       | x       | x     |         |
+| gids             | x     | x       | x       | x     |         |
+| terminal         | x     | x       | x       |       |         |
+| io_counters      | x     | x       | x       |       | x       |
+| nice             | x     | x       | x       | x     | x       |
+| num_fds          | x     |         |         |       |         |
+| num_ctx_switches | x     |         |         |       |         |
+| num_threads      | x     | x       | x       | x     | x       |
+| cpu_times        | x     |         |         |       | x       |
+| memory_info      | x     | x       | x       | x     | x       |
+| memory_info_ex   | x     |         |         |       |         |
+| memory_maps      | x     |         |         |       |         |
+| open_files       | x     |         |         |       |         |
+| send_signal      | x     | x       | x       | x     |         |
+| suspend          | x     | x       | x       | x     |         |
+| resume           | x     | x       | x       | x     |         |
+| terminate        | x     | x       | x       | x     | x       |
+| kill             | x     | x       | x       | x     |         |
+| username         | x     | x       | x       | x     | x       |
+| ionice           |       |         |         |       |         |
+| rlimit           | x     |         |         |       |         |
+| num_handlers     |       |         |         |       |         |
+| threads          | x     |         |         |       |         |
+| cpu_percent      | x     |         | x       | x     |         |
+| cpu_affinity     |       |         |         |       |         |
+| memory_percent   |       |         |         |       |         |
+| parent           | x     |         | x       | x     | x       |
+| children         | x     | x       | x       | x     | x       |
+| connections      | x     |         | x       | x     |         |
+| is_running       |       |         |         |       |         |
+| page_faults      | x     |         |         |       |         |
 
 ### Original Metrics
 
-|item             |Linux  |FreeBSD  |OpenBSD  |macOS   |Windows |Solaris  |
-|-----------------|-------|---------|---------|--------|--------|---------|
-|**HostInfo**     |       |         |         |        |        |         |
-|hostname         |x      |x        |x        |x       |x       |x        |
-|uptime           |x      |x        |x        |x       |        |x        |
-|process          |x      |x        |x        |        |        |x        |
-|os               |x      |x        |x        |x       |x       |x        |
-|platform         |x      |x        |x        |x       |        |x        |
-|platformfamily   |x      |x        |x        |x       |        |x        |
-|virtualization   |x      |         |         |        |        |         |
-|**CPU**          |       |         |         |        |        |         |
-|VendorID         |x      |x        |x        |x       |x       |x        |
-|Family           |x      |x        |x        |x       |x       |x        |
-|Model            |x      |x        |x        |x       |x       |x        |
-|Stepping         |x      |x        |x        |x       |x       |x        |
-|PhysicalID       |x      |         |         |        |        |x        |
-|CoreID           |x      |         |         |        |        |x        |
-|Cores            |x      |         |         |        |x       |x        |
-|ModelName        |x      |x        |x        |x       |x       |x        |
-|Microcode        |x      |         |         |        |        |x        |
-|**LoadAvg**      |       |         |         |        |        |         |
-|Load1            |x      |x        |x        |x       |        |         |
-|Load5            |x      |x        |x        |x       |        |         |
-|Load15           |x      |x        |x        |x       |        |         |
-|**GetDockerID**  |       |         |         |        |        |         |
-|container id     |x      |no       |no       |no      |no      |         |
-|**CgroupsCPU**   |       |         |         |        |        |         |
-|user             |x      |no       |no       |no      |no      |         |
-|system           |x      |no       |no       |no      |no      |         |
-|**CgroupsMem**   |       |         |         |        |        |         |
-|various          |x      |no       |no       |no      |no      |         |
+| item            | Linux | FreeBSD | OpenBSD | macOS | Windows | Solaris |
+| --------------- | ----- | ------- | ------- | ----- | ------- | ------- |
+| **HostInfo**    |       |         |         |       |         |         |
+| hostname        | x     | x       | x       | x     | x       | x       |
+| uptime          | x     | x       | x       | x     |         | x       |
+| process         | x     | x       | x       |       |         | x       |
+| os              | x     | x       | x       | x     | x       | x       |
+| platform        | x     | x       | x       | x     |         | x       |
+| platformfamily  | x     | x       | x       | x     |         | x       |
+| virtualization  | x     |         |         |       |         |         |
+| **CPU**         |       |         |         |       |         |         |
+| VendorID        | x     | x       | x       | x     | x       | x       |
+| Family          | x     | x       | x       | x     | x       | x       |
+| Model           | x     | x       | x       | x     | x       | x       |
+| Stepping        | x     | x       | x       | x     | x       | x       |
+| PhysicalID      | x     |         |         |       |         | x       |
+| CoreID          | x     |         |         |       |         | x       |
+| Cores           | x     |         |         |       | x       | x       |
+| ModelName       | x     | x       | x       | x     | x       | x       |
+| Microcode       | x     |         |         |       |         | x       |
+| **LoadAvg**     |       |         |         |       |         |         |
+| Load1           | x     | x       | x       | x     |         |         |
+| Load5           | x     | x       | x       | x     |         |         |
+| Load15          | x     | x       | x       | x     |         |         |
+| **GetDockerID** |       |         |         |       |         |         |
+| container id    | x     | no      | no      | no    | no      |         |
+| **CgroupsCPU**  |       |         |         |       |         |         |
+| user            | x     | no      | no      | no    | no      |         |
+| system          | x     | no      | no      | no    | no      |         |
+| **CgroupsMem**  |       |         |         |       |         |         |
+| various         | x     | no      | no      | no    | no      |         |
 
 - future work
   - process_iter
